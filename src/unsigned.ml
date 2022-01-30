@@ -5,8 +5,6 @@
  * See the file LICENSE for details.
  *)
 
-module Pervasives = Pervasives [@@ocaml.warning "-3"]
-
 external init : unit -> unit = "integers_unsigned_init"
 let () = init ()
 
@@ -97,10 +95,10 @@ struct
   let succ n = add n one
   let pred n = sub n one
   let lognot n = logxor n max_int
-  let compare (x : t) (y : t) = Pervasives.compare x y
-  let equal (x : t) (y : t) = Pervasives.(=) x y
-  let max (x : t) (y : t) = Pervasives.max x y
-  let min (x : t) (y : t) = Pervasives.min x y
+  let compare (x : t) (y : t) = Stdlib.compare x y
+  let equal (x : t) (y : t) = Stdlib.(=) x y
+  let max (x : t) (y : t) = Stdlib.max x y
+  let min (x : t) (y : t) = Stdlib.min x y
   let pp fmt x = Format.fprintf fmt "%s" (to_string x)
 end
 
